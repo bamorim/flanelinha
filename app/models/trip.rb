@@ -1,9 +1,9 @@
 class Trip < ApplicationRecord
   include AASM
   belongs_to :car
+  belongs_to :parking, optional: true
   has_one :account, through: :car
-  belongs_to :planned_parking, class_name: "Parking", optional: true
-  belongs_to :reserved_parking, class_name: "Parking", optional: true
+  before_create :set_parking
 
   validates_presence_of :destination_latitude, :destination_longitude
 
@@ -24,8 +24,13 @@ class Trip < ApplicationRecord
     state :cancelled
 
     event :reserve do
+      before do
+        if self.parking.free_spaces(car.account.disabled) <= 0
+          self.parking = nearest_parking
+        end
+      end
+
       after do
-        self.reserved_parking = planned_parking
         self.reserved_at = DateTime.now
         save!
       end
@@ -66,6 +71,10 @@ class Trip < ApplicationRecord
   end
 
   def charge_or_cancel!
+  end
+
+  def set_parking
+    self.parking = nearest_parking
   end
 
   def destination

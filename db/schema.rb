@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20171202063130) do
     t.string "password_hash"
     t.string "document_number"
     t.string "document_type"
-    t.boolean "disabled"
+    t.boolean "disabled", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20171202063130) do
 
   create_table "parkings", force: :cascade do |t|
     t.string "name"
-    t.integer "spaces"
-    t.integer "disabled_spaces"
+    t.integer "spaces", default: 0
+    t.integer "disabled_spaces", default: 0
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false
@@ -45,8 +45,7 @@ ActiveRecord::Schema.define(version: 20171202063130) do
     t.integer "car_id"
     t.float "destination_longitude"
     t.float "destination_latitude"
-    t.integer "planned_parking_id"
-    t.integer "reserved_parking_id"
+    t.integer "parking_id"
     t.datetime "reserved_at"
     t.datetime "parked_at"
     t.datetime "unparked_at"
@@ -56,8 +55,7 @@ ActiveRecord::Schema.define(version: 20171202063130) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_trips_on_car_id"
-    t.index ["planned_parking_id"], name: "index_trips_on_planned_parking_id"
-    t.index ["reserved_parking_id"], name: "index_trips_on_reserved_parking_id"
+    t.index ["parking_id"], name: "index_trips_on_parking_id"
   end
 
 end

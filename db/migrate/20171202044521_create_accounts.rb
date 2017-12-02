@@ -5,7 +5,7 @@ class CreateAccounts < ActiveRecord::Migration[5.1]
       t.string :password_hash
       t.string :document_number
       t.string :document_type
-      t.boolean :disabled
+      t.boolean :disabled, default: false
 
       t.timestamps
     end
