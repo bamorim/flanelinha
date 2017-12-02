@@ -24,6 +24,7 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: ruby-rails-sample_production
-  username: ruby-rails-sample
-  password: <%= ENV['RUBY-RAILS-SAMPLE_DATABASE_PASSWORD'] %>
+  database: flanelinha
+  username: flanelinha
+  password: flanelinha
+  host: 10.20.3.140
