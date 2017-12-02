@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  account: one
+  plate_number: MyString
+  nickname: MyString
+
+two:
+  account: one
+  plate_number: MyString
+  nickname: MyString
