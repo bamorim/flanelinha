@@ -1,4 +1,16 @@
 class TripsController < ApplicationController
+  EVENTS = [
+    :reserve,
+    :confirm_reservation,
+    :park,
+    :confirm_park,
+    :fail_payment,
+    :cancel,
+    :unpark,
+    :expire
+  ]
+  before_action :set_trip, only: EVENTS
+
   def show
     @trip = account.trips.find(params[:id])
 
@@ -16,7 +28,21 @@ class TripsController < ApplicationController
     end
   end
 
+  EVENTS.each do |e|
+    define_method e do
+      begin
+        @trip.send(:"#{e}!")
+        render json: @trip
+      rescue
+        render text: "", status: :unprocessable_entity
+      end
+    end
+  end
+
   private
+    def set_trip
+      @trip = account.trips.find(params[:trip_id])
+    end
     # Only allow a trusted parameter "white list" through.
     def trip_create_params
       params.require(:trip).permit(:car_id, :destination_longitude, :destination_latitude)

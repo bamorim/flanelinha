@@ -11,6 +11,7 @@ class CreateTrips < ActiveRecord::Migration[5.1]
       t.datetime :unparked_at
       t.datetime :cancelled_at
       t.integer :reserved_duration
+      t.string :state
 
       t.timestamps
     end
