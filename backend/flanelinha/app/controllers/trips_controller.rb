@@ -1,10 +1,7 @@
 class TripsController < ApplicationController
   EVENTS = [
     :reserve,
-    :confirm_reservation,
     :park,
-    :confirm_park,
-    :fail_payment,
     :cancel,
     :unpark,
     :expire

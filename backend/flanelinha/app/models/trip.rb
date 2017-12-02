@@ -11,7 +11,6 @@ class Trip < ApplicationRecord
     where(
       state: [
         :reserved,
-        :parking,
         :parked
       ]
     )
@@ -19,49 +18,26 @@ class Trip < ApplicationRecord
 
   aasm column: :state do
     state :planned, initial: true
-    state :reserving
-    state :reserving_failed
     state :reserved
-    state :parking
-    state :parking_failed
     state :parked
     state :unparked
     state :cancelled
 
     event :reserve do
       after do
-        # Schedule authorization job
-      end
-      transitions from: :planned, to: :reserving
-    end
-
-    event :confirm_reservation do
-      after do
         self.reserved_parking = planned_parking
         self.reserved_at = DateTime.now
         save!
       end
-      transitions from: [:reserving, :reserving_failed], to: :reserved
+      transitions from: :planned, to: :reserved
     end
 
     event :park do
       after do |duration|
-        # Schedule authorization job
-      end
-      transitions from: :reserved, to: :parking
-    end
-
-    event :confirm_park do
-      after do
-        self.parked_at = DateTime.now
+        self.reserved_duration = duration
         save!
       end
-      transitions from: [:parking, :parking_failed], to: :parked
-    end
-
-    event :fail_payment do
-      transitions from: :parking, to: :parking_failed
-      transitions from: :reserving, to: :reserving_failed
+      transitions from: :reserved, to: :parked
     end
 
     event :cancel do
@@ -70,13 +46,10 @@ class Trip < ApplicationRecord
         save!
       end
       transitions from: :planned, to: :cancelled
-      transitions from: [:reserving, :reserved], to: :cancelled, after: :charge_or_cancel!
+      transitions from: [:reserved], to: :cancelled, after: :charge_or_cancel!
     end
 
     event :unpark do
-      after do
-        # Make the Charge
-      end
       transitions from: [:parked, :expired], to: :unparked, after: :charge!
     end
 
@@ -89,6 +62,7 @@ class Trip < ApplicationRecord
   end
 
   def charge!
+    # Charge using the Mundipagg API
   end
 
   def charge_or_cancel!
