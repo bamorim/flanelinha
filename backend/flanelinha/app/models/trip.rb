@@ -5,6 +5,7 @@ class Trip < ApplicationRecord
   belongs_to :planned_parking, class_name: "Parking", optional: true
   belongs_to :reserved_parking, class_name: "Parking", optional: true
 
+<<<<<<< HEAD
   validates_presence_of :destination_latitude, :destination_longitude
 
   aasm column: :state do
@@ -82,23 +83,24 @@ class Trip < ApplicationRecord
   end
 
   def charge_or_cancel!
+=======
+  scope :parked_or_reserved, lambda do
+    where(
+      state: [
+        :reserved,
+        :parked
+      ]
+    )
+  end
+>>>>>>> wtf
 
-  def nearest_parking(latitude, longitude)
+  def destination
+    Coord.new(destination_latitude, destination_longitude)
+  end
 
-    def dist(p1, p2) # compute approximate distance on earth surfface
-      d_phi = (p1[0] - p2[0]) * 0.5
-      d_lambda = (p1[1] - p2[1]) * 0.5
-      a = (Math.sin(d_phi) ** 2) + Math.cos(p1[0]) * Math.cos(p2[0]) * (Math.sin(d_lambda) ** 2)
-      c  = 2 * Math.atan(a ** 0.5, (1 - a) ** 0.5) ** 2
-      r = 6.371
-      return r * c
-    end
-
-    strong_set = evaluate_strong_set(destination, parkings, threshold, dist)
-    i = 0
-    while strong_set[i].not_free
-      i += 1
-    end
-    return strong_set[i]
+  def nearest_parking
+    Parking
+      .available_lots(destination, 1000)
+      .select{ |p| p.spaces > p.trips.parked_or_reserved }
   end
 end
