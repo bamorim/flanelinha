@@ -42,6 +42,12 @@ class TripsController < ApplicationController
     end
     # Only allow a trusted parameter "white list" through.
     def trip_create_params
-      params.require(:trip).permit(:car_id, :destination_longitude, :destination_latitude)
+      defaults = {
+        car_id: account.cars.first.try(:id)
+      }
+
+      defaults.merge(
+        params.require(:trip).permit(:car_id, :destination_longitude, :destination_latitude)
+      )
     end
 end
