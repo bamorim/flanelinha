@@ -82,5 +82,23 @@ class Trip < ApplicationRecord
   end
 
   def charge_or_cancel!
+
+  def nearest_parking(latitude, longitude)
+
+    def dist(p1, p2) # compute approximate distance on earth surfface
+      d_phi = (p1[0] - p2[0]) * 0.5
+      d_lambda = (p1[1] - p2[1]) * 0.5
+      a = (Math.sin(d_phi) ** 2) + Math.cos(p1[0]) * Math.cos(p2[0]) * (Math.sin(d_lambda) ** 2)
+      c  = 2 * Math.atan(a ** 0.5, (1 - a) ** 0.5) ** 2
+      r = 6.371
+      return r * c
+    end
+
+    strong_set = evaluate_strong_set(destination, parkings, threshold, dist)
+    i = 0
+    while strong_set[i].not_free
+      i += 1
+    end
+    return strong_set[i]
   end
 end
