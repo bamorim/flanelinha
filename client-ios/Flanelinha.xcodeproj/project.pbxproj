@@ -13,6 +13,8 @@
 		711A1D891FD254D10032EA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A1D871FD254D10032EA9D /* LaunchScreen.storyboard */; };
 		711A1D911FD25B7B0032EA9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D901FD25B7B0032EA9D /* LoginViewController.swift */; };
 		711A1D931FD261B90032EA9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D921FD261B90032EA9D /* MapViewController.swift */; };
+		71FDB32B1FD2873C00C89E36 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */; };
+		71FDB32D1FD2BE3C00C89E36 /* AppDelegate+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		711A1D8A1FD254D10032EA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		711A1D901FD25B7B0032EA9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		711A1D921FD261B90032EA9D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
+		71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Actions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,8 +61,10 @@
 			isa = PBXGroup;
 			children = (
 				711A1D7E1FD254D10032EA9D /* AppDelegate.swift */,
+				71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */,
 				711A1D901FD25B7B0032EA9D /* LoginViewController.swift */,
 				711A1D921FD261B90032EA9D /* MapViewController.swift */,
+				71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */,
 				711A1D821FD254D10032EA9D /* Main.storyboard */,
 				711A1D851FD254D10032EA9D /* Assets.xcassets */,
 				711A1D871FD254D10032EA9D /* LaunchScreen.storyboard */,
@@ -139,7 +145,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71FDB32B1FD2873C00C89E36 /* LocationTableViewController.swift in Sources */,
 				711A1D911FD25B7B0032EA9D /* LoginViewController.swift in Sources */,
+				71FDB32D1FD2BE3C00C89E36 /* AppDelegate+Actions.swift in Sources */,
 				711A1D931FD261B90032EA9D /* MapViewController.swift in Sources */,
 				711A1D7F1FD254D10032EA9D /* AppDelegate.swift in Sources */,
 			);
@@ -281,7 +289,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3398VKLH28;
 				INFOPLIST_FILE = Flanelinha/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.openstack-hackathon.Flanelinha";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -297,7 +305,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3398VKLH28;
 				INFOPLIST_FILE = Flanelinha/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "br.openstack-hackathon.Flanelinha";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>waze</string>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Sua localização será utilizada para permitir a reserva de vagas na sua proximidade</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
