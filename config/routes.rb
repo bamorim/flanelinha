@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :accounts, only: [:create]
   resources :trips, only: [:show, :create] do
     TripsController::EVENTS.each do |e|
       post e
