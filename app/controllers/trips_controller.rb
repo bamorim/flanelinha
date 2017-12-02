@@ -11,7 +11,7 @@ class TripsController < ApplicationController
   def show
     @trip = account.trips.find(params[:id])
 
-    render json: @trip
+    render json: @trip.to_json(:include => :parking)
   end
 
   # POST /trips
