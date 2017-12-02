@@ -5,9 +5,32 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Account.create!(
+account = Account.create!(
   email: "bamorim2@gmail.com",
   password_hash: "plaintext",
   document_type: "cpf",
   document_number: "37853732791"
+)
+
+account.cars.create!(
+  plate_number: "ABC1234",
+  nickname: "Carro Mae"
+)
+
+Parking.create!(
+  name: "Engenhao 1",
+  latitude: -22.8944452,
+  longitude: -43.2943711
+)
+
+Parking.create!(
+  name: "Engenhao 2",
+  latitude: -22.89278,
+  longitude: -43.2931798
+)
+
+Parking.create!(
+  name: "Engenhao 3",
+  latitude: -22.8928607,
+  longitude: -43.2957455
 )

@@ -10,6 +10,7 @@ class TripsControllerTest < ActionDispatch::IntegrationTest
       post trips_url, params: { trip: { car_id: @trip.car_id, destination_latitude: @trip.destination_latitude, destination_longitude: @trip.destination_longitude } }, as: :json
     end
 
+    assert Trip.last.planned?
     assert_response 201
   end
 

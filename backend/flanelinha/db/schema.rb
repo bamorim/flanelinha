@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 20171202063130) do
     t.string "password_hash"
     t.string "document_number"
     t.string "document_type"
+    t.boolean "disabled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(version: 20171202063130) do
     t.datetime "unparked_at"
     t.datetime "cancelled_at"
     t.integer "reserved_duration"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_trips_on_car_id"
