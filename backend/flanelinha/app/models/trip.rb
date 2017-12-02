@@ -5,8 +5,17 @@ class Trip < ApplicationRecord
   belongs_to :planned_parking, class_name: "Parking", optional: true
   belongs_to :reserved_parking, class_name: "Parking", optional: true
 
-<<<<<<< HEAD
   validates_presence_of :destination_latitude, :destination_longitude
+
+  scope :parked_or_reserved, -> () do
+    where(
+      state: [
+        :reserved,
+        :parking,
+        :parked
+      ]
+    )
+  end
 
   aasm column: :state do
     state :planned, initial: true
@@ -83,16 +92,7 @@ class Trip < ApplicationRecord
   end
 
   def charge_or_cancel!
-=======
-  scope :parked_or_reserved, lambda do
-    where(
-      state: [
-        :reserved,
-        :parked
-      ]
-    )
   end
->>>>>>> wtf
 
   def destination
     Coord.new(destination_latitude, destination_longitude)
@@ -101,6 +101,7 @@ class Trip < ApplicationRecord
   def nearest_parking
     Parking
       .available_lots(destination, 1000)
-      .select{ |p| p.spaces > p.trips.parked_or_reserved }
+      .select{ |p| p.spaces > p.trips.parked_or_reserved.count }
+      .first
   end
 end

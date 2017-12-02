@@ -20,17 +20,20 @@ account.cars.create!(
 Parking.create!(
   name: "Engenhao 1",
   latitude: -22.8944452,
-  longitude: -43.2943711
+  longitude: -43.2943711,
+  spaces: 10
 )
 
 Parking.create!(
   name: "Engenhao 2",
   latitude: -22.89278,
-  longitude: -43.2931798
+  longitude: -43.2931798,
+  spaces: 20
 )
 
 Parking.create!(
   name: "Engenhao 3",
   latitude: -22.8928607,
-  longitude: -43.2957455
+  longitude: -43.2957455,
+  spaces: 5
 )
