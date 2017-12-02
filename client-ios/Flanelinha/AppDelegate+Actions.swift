@@ -2,7 +2,6 @@ import UIKit
 
 extension AppDelegate {
     
-    
     func addNavigationAppIfAvaiable(app: appType) {
         let application = UIApplication.shared
         if application.canOpenURL(URL(string: app.urlString)!) {
@@ -16,7 +15,5 @@ extension AppDelegate {
             addNavigationAppIfAvaiable(app: app)
         }
     }
-    
-    
     
 }
