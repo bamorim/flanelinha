@@ -19,7 +19,7 @@ class TripsController < ApplicationController
     @trip = account.trips.new(trip_create_params)
 
     if @trip.save
-      render json: @trip, status: :created, location: @trip
+      render json: @trip.to_json(:include => :parking), status: :created, location: @trip
     else
       render json: @trip.errors, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class TripsController < ApplicationController
     define_method e do
       begin
         @trip.send(:"#{e}!")
-        render json: @trip
+        render json: @trip.to_json(:include => :parking)
       rescue
         render text: "", status: :unprocessable_entity
       end
