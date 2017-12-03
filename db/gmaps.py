@@ -9,9 +9,9 @@ r = requests.get(init_requests)
 
 json_data = r.json()
 results = json_data['results'] 
-out = open('resultados.json', 'w')
+out = open('parkings.json', 'w')
 
-for page in range(10):
+for page in range(9):
     json_data = requests.get(
             init_requests +
             '&next_page_token=' +
@@ -27,7 +27,7 @@ print len(results)
 
 for result in results:
     vagas = random.randint(1,100)
-    especiais = ceil(vagas*0.07)
+    especiais = int(ceil(vagas*0.07))
     
     to_add = {}
     to_add['name'] = result['vicinity'].partition(',')[0]
