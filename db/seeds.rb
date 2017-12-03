@@ -43,8 +43,12 @@ Trip.transaction do
       destination_longitude: p.longitude
     )
     trip.reserve!
-    trip.park!
+    duration = rand(5)+1
+    trip.park!(duration)
     trip.unpark!
+    trip.update_attributes!(
+      unparked_at: trip.reload.parked_at + duration.hours - rand(10).minutes - rand(60).seconds
+    )
   end
 
   parkings.each do |p|

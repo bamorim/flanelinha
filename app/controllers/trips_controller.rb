@@ -25,7 +25,7 @@ class TripsController < ApplicationController
     end
   end
 
-  EVENTS.each do |e|
+  EVENTS.select{ |e| e != :park }.each do |e|
     define_method e do
       begin
         @trip.send(:"#{e}!")
@@ -34,6 +34,15 @@ class TripsController < ApplicationController
         render text: "", status: :unprocessable_entity
       end
     end
+  end
+
+  def park
+    duration = params[:duration].to_i
+    raise "invalid duration" unless duration > 0
+    @trip.park!(duration)
+    render json: @trip.to_json(:include => :parking)
+  rescue
+    render text: "", status: :unprocessable_entity
   end
 
   private
