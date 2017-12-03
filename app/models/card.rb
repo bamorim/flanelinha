@@ -1,12 +1,14 @@
 class Card < ApplicationRecord
   belongs_to :account
 
+  validates_presence_of :valid_thru, :last_digits
+
   def valid_thru= valid
     self.valid_month, self.valid_year = valid.split("/").map(&:to_i)
 
   end
   def valid_thru
-    "%02d/%02d" % [valid_month, valid_year]
+    "%02d/%02d" % [valid_month, valid_year] if valid_month && valid_year
   end
 
   def digits= d

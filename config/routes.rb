@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :cards
+  get '/me', to: "accounts#get"
+  resource :cards, only: [:create]
   resources :sessions, only: [:create]
   resources :accounts, only: [:create]
   resources :trips, only: [:show, :create] do

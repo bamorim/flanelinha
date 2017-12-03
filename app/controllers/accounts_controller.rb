@@ -1,4 +1,8 @@
 class AccountsController < ApplicationController
+  def get
+    render json: account
+  end
+
   def create
     Account.transaction do
       @acc = Account.new(account_params)
@@ -7,7 +11,7 @@ class AccountsController < ApplicationController
       @car.save!
       render json: @acc, status: :created
     end
-  rescue => e
+  rescue
     if @acc && !@acc.valid?
       render json: @acc.errors, status: :unprocessable_entity
     elsif @car && !@car.valid?
