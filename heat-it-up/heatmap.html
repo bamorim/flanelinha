@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
+    <a href="https://icons8.com">Icon pack by Icons8</a>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
@@ -43,15 +44,22 @@
 
 
       var position = [-22.89043, -43.2956458];
-      // function getLocation() {
-      //     if (navigator.geolocation) {
-      //         navigator.geolocation.getCurrentPosition((pos) => {
-      //           position = [pos.coords.latitudde, pos.coords.longitude];
-      //         });
-      //     } else {
-      //         return [-22.89043, -43.2956458];
-      //     }
-      // }
+      function getLocation() {
+          if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition((pos) => {
+                position = [pos.coords.latitudde, pos.coords.longitude];
+              });
+          } else {
+              return [-22.89043, -43.2956458];
+          }
+      }
+
+      // create custom icon
+      // var parkingIcon = L.icon({
+      //   iconUrl: "",
+      //   iconSize: [38, 95], // size of the icon
+      //   popupAnchor: [0,-15]
+      //   });
 
       var markerLayer = L.layerGroup();
       var parkings = new Array();
