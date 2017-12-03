@@ -5,9 +5,6 @@
 
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico" />
-    <a href="https://icons8.com">Icon pack by Icons8</a>
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ==" crossorigin=""/>
     <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js" integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log==" crossorigin=""></script>
@@ -42,6 +39,32 @@
     <div id="spotmapid"></div>
     <script>
 
+      function defineMarker(parking, trips) {
+        var icons = [
+          L.icon({
+            iconUrl: "images/logo-full.png",
+            iconSize: [38, 38], // size of the icon
+            popupAnchor: [0,-15]
+            }),
+          L.icon({
+            iconUrl: "images/logo-mid.png",
+            iconSize: [38, 38], // size of the icon
+            popupAnchor: [0,-15]
+            }),
+          L.icon({
+            iconUrl: "images/logo-min.png",
+            iconSize: [38, 38], // size of the icon
+            popupAnchor: [0,-15]
+            })
+        ]
+
+        var availability = (parking.free_spaces + parking.free_disabled_spaces) / (parking.spaces + parking.disabled_spaces)
+        console.log(availability)
+
+        if (availability < 0.3) return icons[2];
+        else if (availability <= 0.555) return icons[1];
+        else return icons[0];
+      }
 
       var position = [-22.89043, -43.2956458];
       function getLocation() {
@@ -69,17 +92,20 @@
           (data) => {
             markerLayer.clearLayers(); // don't forget to refresh
             parkings = data;
+            console.log(Object.keys(parkings[0]));
             var heatData = {
               max: null,
               data: data
             }
-            heatLayer.setData(heatData);
+            //heatLayer.setData(heatData);
 
             for (var p = 0; p < data.length; ++p) {
               var parking = data[p];
-              var marker = L.marker([
-                parking.latitude, 
-                parking.longitude])
+              var marker = L.marker(
+                [parking.latitude,
+                  parking.longitude],
+                {icon: defineMarker(parking, trips)}
+                )
               .addTo(markerLayer)
               .bindPopup(
                 "<p>Vagas "+ parking.free_spaces.toString() +
@@ -92,6 +118,7 @@
         var trips_res = $.get('http://10.20.3.166:3000/trips', 
                               (data) => {trips = data;}
         );
+        console.log(trips_res.length, "asdsdas")
       }
 
       loadFromServer();
