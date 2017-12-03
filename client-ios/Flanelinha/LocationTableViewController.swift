@@ -44,14 +44,17 @@ class LocationTableViewController: UITableViewController {
 
 extension LocationTableViewController : UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let mapView = mapView,
+        guard let _ = mapView,
             let searchBarText = searchController.searchBar.text else {
                 return
         }
         
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarText
-        request.region = mapView.region
+        let coodinate2d = CLLocationCoordinate2D(latitude: -22.9068, longitude: -43.1729)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        
+        request.region = MKCoordinateRegion(center: coodinate2d, span: span)
         
         let search = MKLocalSearch(request: request)
         search.start { response, _ in

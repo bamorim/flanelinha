@@ -14,6 +14,9 @@
 		711A1D911FD25B7B0032EA9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D901FD25B7B0032EA9D /* LoginViewController.swift */; };
 		711A1D931FD261B90032EA9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D921FD261B90032EA9D /* MapViewController.swift */; };
 		714999621FD2F53E00F75516 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714999611FD2F53E00F75516 /* RegistrationViewController.swift */; };
+		71A7EB9D1FD443FA00A79C0A /* StopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7EB9C1FD443FA00A79C0A /* StopViewController.swift */; };
+		71A7EB9F1FD44FA000A79C0A /* FinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A7EB9E1FD44FA000A79C0A /* FinishViewController.swift */; };
+		71CB21141FD411AD00D007AF /* CreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71CB21131FD411AD00D007AF /* CreditCardViewController.swift */; };
 		71E902631FD3014000EC1775 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E902621FD3014000EC1775 /* TabBarController.swift */; };
 		71E902651FD3171100EC1775 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E902641FD3171100EC1775 /* ProfileViewController.swift */; };
 		71FDB32B1FD2873C00C89E36 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */; };
@@ -32,6 +35,9 @@
 		711A1D901FD25B7B0032EA9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		711A1D921FD261B90032EA9D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		714999611FD2F53E00F75516 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		71A7EB9C1FD443FA00A79C0A /* StopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopViewController.swift; sourceTree = "<group>"; };
+		71A7EB9E1FD44FA000A79C0A /* FinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishViewController.swift; sourceTree = "<group>"; };
+		71CB21131FD411AD00D007AF /* CreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewController.swift; sourceTree = "<group>"; };
 		71E902621FD3014000EC1775 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		71E902641FD3171100EC1775 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +96,10 @@
 				71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */,
 				71E902621FD3014000EC1775 /* TabBarController.swift */,
 				71E902641FD3171100EC1775 /* ProfileViewController.swift */,
+				71A7EB9C1FD443FA00A79C0A /* StopViewController.swift */,
+				71CB21131FD411AD00D007AF /* CreditCardViewController.swift */,
 				711A1D821FD254D10032EA9D /* Main.storyboard */,
+				71A7EB9E1FD44FA000A79C0A /* FinishViewController.swift */,
 				711A1D851FD254D10032EA9D /* Assets.xcassets */,
 				711A1D871FD254D10032EA9D /* LaunchScreen.storyboard */,
 				711A1D8A1FD254D10032EA9D /* Info.plist */,
@@ -185,10 +194,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Flanelinha/Pods-Flanelinha-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DLLocalNotifications/DLLocalNotifications.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLLocalNotifications.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -237,12 +250,15 @@
 			files = (
 				714999621FD2F53E00F75516 /* RegistrationViewController.swift in Sources */,
 				71FDB32B1FD2873C00C89E36 /* LocationTableViewController.swift in Sources */,
+				71CB21141FD411AD00D007AF /* CreditCardViewController.swift in Sources */,
 				711A1D911FD25B7B0032EA9D /* LoginViewController.swift in Sources */,
 				71FDB32D1FD2BE3C00C89E36 /* AppDelegate+Actions.swift in Sources */,
 				71E902631FD3014000EC1775 /* TabBarController.swift in Sources */,
+				71A7EB9D1FD443FA00A79C0A /* StopViewController.swift in Sources */,
 				711A1D931FD261B90032EA9D /* MapViewController.swift in Sources */,
 				71E902651FD3171100EC1775 /* ProfileViewController.swift in Sources */,
 				711A1D7F1FD254D10032EA9D /* AppDelegate.swift in Sources */,
+				71A7EB9F1FD44FA000A79C0A /* FinishViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

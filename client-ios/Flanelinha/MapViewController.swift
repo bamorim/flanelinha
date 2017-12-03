@@ -1,6 +1,7 @@
 import UIKit
 import MapKit
 import Alamofire
+import DLLocalNotifications
 
 protocol HandleMapSearch: class {
     func showPlace(_ placemark: MKPlacemark)
@@ -13,8 +14,8 @@ let navigationApps: [appType] = [(name: "Apple Maps", urlString: "http://maps.ap
                                  (name: "Google Maps", urlString: "comgooglemaps://", format: "comgooglemaps://?saddr=&daddr=%@,%@&directionsmode=driving")]
 
 var name: String!
-var latitude: Double!
-var longitude: Double!
+var latitude: String!
+var longitude: String!
 
 class MapViewController: UIViewController {
 
@@ -100,8 +101,8 @@ class MapViewController: UIViewController {
         let selectedLongitude = Float(String(selectedPlace.coordinate.longitude))!
         
         let parameters: Parameters = [
+            "account_id": UserDefaults.standard.integer(forKey: "userID"),
             "trip": [
-                "account_id": UserDefaults.standard.integer(forKey: "userID"),
                 "destination_latitude": selectedLatitude,
                 "destination_longitude": selectedLongitude
             ]
@@ -109,34 +110,63 @@ class MapViewController: UIViewController {
         
         Alamofire.request("http://10.20.3.166:3000/trips", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
             let jsonResponse = response.result.value as! [String:AnyObject]
+            
+            let tripID = jsonResponse["id"] as! Int
+            UserDefaults.standard.set(tripID, forKey: "tripID")
+            
             let parking = jsonResponse["parking"] as! [String:AnyObject]
             name = parking["name"] as! String
-            latitude = parking["latitude"] as! Double
-            longitude = parking["longitude"] as! Double
+            latitude = String(parking["latitude"] as! Double)
+            longitude = String(parking["longitude"] as! Double)
             
-            let alert = UIAlertController(title: "Procurar vaga próxima?", message: "Vamos procurar a vaga mais próxima para você.", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Encontramos uma vaga próxima", message: String(format: "Modificamos a direção para o estacionamento %@.", name), preferredStyle: .alert)
             let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
                 self.showNavigationOptions()
             })
             let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
             alert.addAction(okAction)
             alert.addAction(cancelAction)
-            self.show(alert, sender: nil)
+            self.present(alert, animated: true, completion: nil)
         })
     }
     
     func showNavigationOptions() {
+        self.scheludeLocalNotificationOfSuccess()
         let alert = UIAlertController(title: nil, message: "Escolha o aplicativo", preferredStyle: .actionSheet)
         for app in installedNavigationApps {
             let appButton = UIAlertAction(title: app.name, style: .default, handler: { _ in
+                self.scheludeLocalNotificationOfSuccess()
                 let urlString = String(format: app.format, latitude, longitude)
                 UIApplication.shared.open(URL(string: urlString)!, options: [:], completionHandler: nil)
             })
             alert.addAction(appButton)
         }
-        let cancelButton = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: "Continuar aqui", style: .cancel, handler: { _ in
+            
+            let tripID = String(UserDefaults.standard.integer(forKey: "tripID"))
+            let parameters: Parameters = [
+                "account_id": UserDefaults.standard.integer(forKey: "userID")
+            ]
+            let url = String(format: "http://10.20.3.166:3000/trips/%@/reserve", tripID)
+            Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    let stopController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "StopViewController") as! StopViewController
+                    UIApplication.shared.keyWindow?.rootViewController = stopController
+                }
+            })
+        })
         alert.addAction(cancelButton)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func scheludeLocalNotificationOfSuccess() {
+        // The date you would like the notification to fire at
+        let triggerDate = Date().addingTimeInterval(30)
+        
+        let firstNotification = DLNotification(identifier: "firstNotification", alertTitle: "Notification Alert", alertBody: "You have successfully created a notification", date: triggerDate, repeats: .None)
+        
+        let scheduler = DLNotificationScheduler()
+        _ = scheduler.scheduleNotification(notification: firstNotification)
     }
     
 }

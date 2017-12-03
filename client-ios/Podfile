@@ -7,5 +7,7 @@ target 'Flanelinha' do
 
   # Pods for Flanelinha
   pod 'Alamofire'
+  pod 'DLLocalNotifications'
+  pod 'IQKeyboardManagerSwift'
 
 end

@@ -9,7 +9,7 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var plate1234TextField: UITextField!
     @IBOutlet weak var disabledSwitch: UISwitch!
     @IBOutlet weak var olderSwitch: UISwitch!
-    
+    @IBOutlet weak var nameTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,22 +24,25 @@ class RegistrationViewController: UIViewController {
     
     @IBAction func didTapRegisterButton(_ sender: Any) {
         let parameters: Parameters = [
-            "email": emailTextField.text!,
-            "document_number": identificationTextField.text!,
-            "disabled": disabledSwitch.isOn,
-            "plate_number": String(format: "%@%@", plateABCTextField, plate1234TextField)
+            "account": [
+                "name": nameTextField.text!,
+                "email": emailTextField.text!,
+                "document_number": identificationTextField.text!,
+                "disabled": disabledSwitch.isOn
+            ],
+            "car": [
+                "nickname": "Meu Carro",
+                "plate_number": String(format: "%@-%@", plateABCTextField.text!, plate1234TextField.text!)
+            ]
         ]
         
-        Alamofire.request("http://10.20.3.166:3000/account", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
+        Alamofire.request("http://10.20.3.166:3000/accounts", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
+            NSLog("response: \(response)")
             let jsonResponse = response.result.value as! [String:AnyObject]
             let id = jsonResponse["id"] as! Int
             UserDefaults.standard.set(id, forKey: "userID")
-            let rootVC = TabBarController.instance()
-            UIApplication.shared.keyWindow?.rootViewController = rootVC
+            self.dismiss(animated: true, completion: nil)
         })
     }
-    
-    
-    
 
 }

@@ -1,4 +1,5 @@
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -12,6 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = homeTabController
             window?.makeKeyAndVisible()
         }
+        
+        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.sharedManager().keyboardDistanceFromTextField = 45
+        IQKeyboardManager.sharedManager().enableAutoToolbar = false
+        IQKeyboardManager.sharedManager().shouldResignOnTouchOutside = true
+        IQKeyboardManager.sharedManager().disabledDistanceHandlingClasses.append(MapViewController.self)
         
         return true
     }
