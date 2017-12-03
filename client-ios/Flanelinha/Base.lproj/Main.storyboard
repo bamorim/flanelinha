@@ -239,6 +239,7 @@
                         <outlet property="disabledSwitch" destination="5bE-6w-D3g" id="XwL-AE-gpe"/>
                         <outlet property="emailTextField" destination="Pzv-jk-TZ4" id="XA3-Bl-Y84"/>
                         <outlet property="identificationTextField" destination="J12-Dc-246" id="Gkm-UQ-YX3"/>
+                        <outlet property="olderSwitch" destination="hdx-43-EtF" id="mxC-mr-H0f"/>
                         <outlet property="plate1234TextField" destination="6xu-LK-ca0" id="Tac-tn-LDe"/>
                         <outlet property="plateABCTextField" destination="q2z-lQ-0MV" id="4IH-Wh-d1e"/>
                     </connections>

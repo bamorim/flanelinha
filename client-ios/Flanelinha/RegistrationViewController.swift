@@ -8,12 +8,14 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var plateABCTextField: UITextField!
     @IBOutlet weak var plate1234TextField: UITextField!
     @IBOutlet weak var disabledSwitch: UISwitch!
+    @IBOutlet weak var olderSwitch: UISwitch!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        disabledSwitch.isOn = false
+        olderSwitch.isOn = false
     }
     
     @IBAction func didTapCancelButton(_ sender: Any) {
