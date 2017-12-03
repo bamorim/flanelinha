@@ -9,7 +9,8 @@ account = Account.create!(
   email: "bamorim2@gmail.com",
   password_hash: "plaintext",
   document_type: "cpf",
-  document_number: "37853732791"
+  document_number: "37853732791",
+  name: "Bernardo Amorim"
 )
 
 account.cars.create!(

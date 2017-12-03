@@ -3,7 +3,7 @@ class Account < ApplicationRecord
   has_many :trips, through: :cars
   has_one :card, dependent: :destroy
 
-  validates_presence_of :email, :document_number
+  validates_presence_of :email, :document_number, :name
 
   def as_json(opts = {})
     super(
