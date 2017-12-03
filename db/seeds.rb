@@ -18,26 +18,6 @@ account.cars.create!(
   nickname: "Carro Mae"
 )
 
-Parking.create!(
-  name: "Engenhao 1",
-  latitude: -22.8944452,
-  longitude: -43.2943711,
-  spaces: 10,
-  disabled_spaces: 2
-)
-
-Parking.create!(
-  name: "Engenhao 2",
-  latitude: -22.89278,
-  longitude: -43.2931798,
-  spaces: 20,
-  disabled_spaces: 1
-)
-
-Parking.create!(
-  name: "Engenhao 3",
-  latitude: -22.8928607,
-  longitude: -43.2957455,
-  spaces: 5,
-  disabled_spaces: 3
-)
+JSON.parse(File.read(File.join(__dir__,"parkings.json"))).each do |p|
+  Parking.create!(p)
+end
