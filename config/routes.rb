@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cards
   resources :sessions, only: [:create]
   resources :accounts, only: [:create]
   resources :trips, only: [:show, :create] do

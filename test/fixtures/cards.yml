@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  last_digits: MyString
+  valid_year: 1
+  valid_month: 1
+  account: one
+
+two:
+  last_digits: MyString
+  valid_year: 1
+  valid_month: 1
+  account: two

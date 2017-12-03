@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171202063130) do
+ActiveRecord::Schema.define(version: 20171203102757) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 20171202063130) do
     t.boolean "disabled", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.string "last_digits"
+    t.integer "valid_year"
+    t.integer "valid_month"
+    t.integer "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_cards_on_account_id"
   end
 
   create_table "cars", force: :cascade do |t|
