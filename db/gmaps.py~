@@ -5,7 +5,7 @@ import json
 import time
 
 base_req = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCW2OA0MUeRUW7w4aGO1_p2sDOXyVLOMYo'
-init_requests = base_req + '&keyword=loja&location=-22.9068,-43.1729&radius=10000'
+init_requests = base_req + '&keyword=bar&location=-22.8932751,-433055823&radius=10000'
 
 r = requests.get(init_requests)
 
