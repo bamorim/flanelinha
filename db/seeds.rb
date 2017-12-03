@@ -6,7 +6,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-account = Account.create!(
+my_account = Account.create!(
   email: "bamorim2@gmail.com",
   password_hash: "plaintext",
   document_type: "cpf",
@@ -14,7 +14,7 @@ account = Account.create!(
   name: "Bernardo Amorim"
 )
 
-account.cars.create!(
+my_car = my_account.cars.create!(
   plate_number: "ABC-1234",
   nickname: "Carro Mae"
 )
@@ -32,7 +32,22 @@ JSON.parse(File.read(File.join(__dir__,"parkings.json"))).each do |p|
 end
 
 Trip.transaction do
-  Parking.all.each do |p|
+  parkings = Parking.all
+
+  parkings.shuffle.first(20).each_with_index do |p,i| 
+    dt = (21-i).days.ago
+    trip = my_car.trips.create!(
+      created_at: dt,
+      updated_at: dt,
+      destination_latitude: p.latitude,
+      destination_longitude: p.longitude
+    )
+    trip.reserve!
+    trip.park!
+    trip.unpark!
+  end
+
+  parkings.each do |p|
     acc = Account.create!(
       email: "user#{p.id}@hackathon.com",
       name: "Pessoa #{p.id}",
@@ -52,3 +67,4 @@ Trip.transaction do
     trip.park!
   end
 end
+

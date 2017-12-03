@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   end
   resources :parkings, only: [:index]
   resources :cars, only: [:index, :create, :update]
+  resources :charges, only: [:index]
 end

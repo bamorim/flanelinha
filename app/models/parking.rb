@@ -2,7 +2,6 @@ class Parking < ApplicationRecord
   has_many :trips
 
   def self.available_lots(destination, threshold)
-    puts threshold
     all
       .sort_by{ |p| destination.distance(p.coord) }
       .select{ |p| destination.distance(p.coord) <= threshold }
