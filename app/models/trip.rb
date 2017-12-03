@@ -40,6 +40,7 @@ class Trip < ApplicationRecord
     event :park do
       after do |duration|
         self.reserved_duration = duration
+        self.parked_at = DateTime.now
         save!
       end
       transitions from: :reserved, to: :parked
@@ -55,6 +56,10 @@ class Trip < ApplicationRecord
     end
 
     event :unpark do
+      after do
+        self.unparked_at = DateTime.now
+        save!
+      end
       transitions from: [:parked, :expired], to: :unparked, after: :charge!
     end
 
