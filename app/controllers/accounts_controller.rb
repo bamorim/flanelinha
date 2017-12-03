@@ -24,7 +24,7 @@ class AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:email, :document_number, :disabled)
+    params.require(:account).permit(:name, :email, :document_number, :disabled)
   end
 
   def car_params
