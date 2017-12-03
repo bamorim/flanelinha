@@ -1,5 +1,6 @@
 import UIKit
 import MapKit
+import Alamofire
 
 protocol HandleMapSearch: class {
     func showPlace(_ placemark: MKPlacemark)
@@ -10,6 +11,10 @@ var installedNavigationApps = [appType]()
 let navigationApps: [appType] = [(name: "Apple Maps", urlString: "http://maps.apple.com", format: "http://maps.apple.com/maps?q=%@,%@"),
                                  (name: "Waze", urlString: "waze://", format: "waze://?ll=%@,%@&navigate=yes"),
                                  (name: "Google Maps", urlString: "comgooglemaps://", format: "comgooglemaps://?saddr=&daddr=%@,%@&directionsmode=driving")]
+
+var name: String!
+var latitude: Double!
+var longitude: Double!
 
 class MapViewController: UIViewController {
 
@@ -45,6 +50,9 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkLocationAuthorizationStatus()
+        
+        
+        
     }
 
     func checkLocationAuthorizationStatus() {
@@ -88,13 +96,39 @@ class MapViewController: UIViewController {
             return
         }
         
-        // TODO: send info to backend
+        let selectedLatitude = Float(String(selectedPlace.coordinate.latitude))!
+        let selectedLongitude = Float(String(selectedPlace.coordinate.longitude))!
         
+        let parameters: Parameters = [
+            "trip": [
+                "account_id": UserDefaults.standard.integer(forKey: "userID"),
+                "destination_latitude": selectedLatitude,
+                "destination_longitude": selectedLongitude
+            ]
+        ]
+        
+        Alamofire.request("http://10.20.3.166:3000/trips", method: .post, parameters: parameters, encoding: JSONEncoding.default).validate().responseJSON(completionHandler: { response in
+            let jsonResponse = response.result.value as! [String:AnyObject]
+            let parking = jsonResponse["parking"] as! [String:AnyObject]
+            name = parking["name"] as! String
+            latitude = parking["latitude"] as! Double
+            longitude = parking["longitude"] as! Double
+            
+            let alert = UIAlertController(title: "Procurar vaga próxima?", message: "Vamos procurar a vaga mais próxima para você.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .default, handler: { _ in
+                self.showNavigationOptions()
+            })
+            let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+            self.show(alert, sender: nil)
+        })
+    }
+    
+    func showNavigationOptions() {
         let alert = UIAlertController(title: nil, message: "Escolha o aplicativo", preferredStyle: .actionSheet)
         for app in installedNavigationApps {
             let appButton = UIAlertAction(title: app.name, style: .default, handler: { _ in
-                let latitude = String(selectedPlace.coordinate.latitude)
-                let longitude = String(selectedPlace.coordinate.longitude)
                 let urlString = String(format: app.format, latitude, longitude)
                 UIApplication.shared.open(URL(string: urlString)!, options: [:], completionHandler: nil)
             })

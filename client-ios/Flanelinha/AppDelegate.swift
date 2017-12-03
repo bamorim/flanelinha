@@ -6,7 +6,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if UserDefaults.standard.integer(forKey: "userID") != 0 {
+            let homeTabController = TabBarController.instance()
+            window?.rootViewController = homeTabController
+            window?.makeKeyAndVisible()
+        }
+        
         return true
     }
 

@@ -13,11 +13,16 @@
 		711A1D891FD254D10032EA9D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 711A1D871FD254D10032EA9D /* LaunchScreen.storyboard */; };
 		711A1D911FD25B7B0032EA9D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D901FD25B7B0032EA9D /* LoginViewController.swift */; };
 		711A1D931FD261B90032EA9D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711A1D921FD261B90032EA9D /* MapViewController.swift */; };
+		714999621FD2F53E00F75516 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714999611FD2F53E00F75516 /* RegistrationViewController.swift */; };
+		71E902631FD3014000EC1775 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E902621FD3014000EC1775 /* TabBarController.swift */; };
+		71E902651FD3171100EC1775 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E902641FD3171100EC1775 /* ProfileViewController.swift */; };
 		71FDB32B1FD2873C00C89E36 /* LocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */; };
 		71FDB32D1FD2BE3C00C89E36 /* AppDelegate+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */; };
+		CC3F30EC10F15628B137A11E /* Pods_Flanelinha.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D3EC84363A77FA1E37973392 /* Pods_Flanelinha.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0AA0D5DABFF8489F7D14A68D /* Pods-Flanelinha.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flanelinha.release.xcconfig"; path = "Pods/Target Support Files/Pods-Flanelinha/Pods-Flanelinha.release.xcconfig"; sourceTree = "<group>"; };
 		711A1D7B1FD254D10032EA9D /* Flanelinha.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flanelinha.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		711A1D7E1FD254D10032EA9D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		711A1D831FD254D10032EA9D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -26,8 +31,13 @@
 		711A1D8A1FD254D10032EA9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		711A1D901FD25B7B0032EA9D /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		711A1D921FD261B90032EA9D /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		714999611FD2F53E00F75516 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		71E902621FD3014000EC1775 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		71E902641FD3171100EC1775 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewController.swift; sourceTree = "<group>"; };
 		71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Actions.swift"; sourceTree = "<group>"; };
+		D3EC84363A77FA1E37973392 /* Pods_Flanelinha.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Flanelinha.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCEC94257D1AE229A7CE9227 /* Pods-Flanelinha.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flanelinha.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Flanelinha/Pods-Flanelinha.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,17 +45,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC3F30EC10F15628B137A11E /* Pods_Flanelinha.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6AB1123C2FAE8BE935C2E008 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FCEC94257D1AE229A7CE9227 /* Pods-Flanelinha.debug.xcconfig */,
+				0AA0D5DABFF8489F7D14A68D /* Pods-Flanelinha.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		711A1D721FD254D10032EA9D = {
 			isa = PBXGroup;
 			children = (
 				711A1D7D1FD254D10032EA9D /* Flanelinha */,
 				711A1D7C1FD254D10032EA9D /* Products */,
+				6AB1123C2FAE8BE935C2E008 /* Pods */,
+				972714B51C060FC75068A629 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,17 +82,28 @@
 		711A1D7D1FD254D10032EA9D /* Flanelinha */ = {
 			isa = PBXGroup;
 			children = (
-				711A1D7E1FD254D10032EA9D /* AppDelegate.swift */,
-				71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */,
 				711A1D901FD25B7B0032EA9D /* LoginViewController.swift */,
+				714999611FD2F53E00F75516 /* RegistrationViewController.swift */,
 				711A1D921FD261B90032EA9D /* MapViewController.swift */,
 				71FDB32A1FD2873C00C89E36 /* LocationTableViewController.swift */,
+				711A1D7E1FD254D10032EA9D /* AppDelegate.swift */,
+				71FDB32C1FD2BE3C00C89E36 /* AppDelegate+Actions.swift */,
+				71E902621FD3014000EC1775 /* TabBarController.swift */,
+				71E902641FD3171100EC1775 /* ProfileViewController.swift */,
 				711A1D821FD254D10032EA9D /* Main.storyboard */,
 				711A1D851FD254D10032EA9D /* Assets.xcassets */,
 				711A1D871FD254D10032EA9D /* LaunchScreen.storyboard */,
 				711A1D8A1FD254D10032EA9D /* Info.plist */,
 			);
 			path = Flanelinha;
+			sourceTree = "<group>";
+		};
+		972714B51C060FC75068A629 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D3EC84363A77FA1E37973392 /* Pods_Flanelinha.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +113,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 711A1D8D1FD254D10032EA9D /* Build configuration list for PBXNativeTarget "Flanelinha" */;
 			buildPhases = (
+				7FDE4D85ECB92C4E612615C8 /* [CP] Check Pods Manifest.lock */,
 				711A1D771FD254D10032EA9D /* Sources */,
 				711A1D781FD254D10032EA9D /* Frameworks */,
 				711A1D791FD254D10032EA9D /* Resources */,
+				58011D56CD19008ECFD9C091 /* [CP] Embed Pods Frameworks */,
+				BB21B7B49079E06BBF17E458 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,15 +176,72 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		58011D56CD19008ECFD9C091 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Flanelinha/Pods-Flanelinha-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flanelinha/Pods-Flanelinha-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7FDE4D85ECB92C4E612615C8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Flanelinha-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB21B7B49079E06BBF17E458 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Flanelinha/Pods-Flanelinha-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		711A1D771FD254D10032EA9D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				714999621FD2F53E00F75516 /* RegistrationViewController.swift in Sources */,
 				71FDB32B1FD2873C00C89E36 /* LocationTableViewController.swift in Sources */,
 				711A1D911FD25B7B0032EA9D /* LoginViewController.swift in Sources */,
 				71FDB32D1FD2BE3C00C89E36 /* AppDelegate+Actions.swift in Sources */,
+				71E902631FD3014000EC1775 /* TabBarController.swift in Sources */,
 				711A1D931FD261B90032EA9D /* MapViewController.swift in Sources */,
+				71E902651FD3171100EC1775 /* ProfileViewController.swift in Sources */,
 				711A1D7F1FD254D10032EA9D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -284,6 +377,7 @@
 		};
 		711A1D8E1FD254D10032EA9D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FCEC94257D1AE229A7CE9227 /* Pods-Flanelinha.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +394,7 @@
 		};
 		711A1D8F1FD254D10032EA9D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0AA0D5DABFF8489F7D14A68D /* Pods-Flanelinha.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
