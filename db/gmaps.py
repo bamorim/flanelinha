@@ -3,19 +3,18 @@ import random
 import requests
 import json 
 
-init_requests = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCW2OA0MUeRUW7w4aGO1_p2sDOXyVLOMYo&keyword=bar&location=-22.9068,-43.1729&radius=320'
+init_requests = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?key=AIzaSyCW2OA0MUeRUW7w4aGO1_p2sDOXyVLOMYo&keyword=bar&location=-22.9068,-43.1729&radius=10000'
 
 r = requests.get(init_requests)
 
 json_data = r.json()
 results = json_data['results'] 
-print(len(results))
 out = open('resultados.json', 'w')
 
-for i in range(10):
+for page in range(10):
     json_data = requests.get(
             init_requests +
-            '&page_token=' +
+            '&next_page_token=' +
             json_data['next_page_token']).json()
     results = results + json_data['results']
 
@@ -24,6 +23,7 @@ for i in range(10):
     except: 
         break
 
+print len(results)
 
 for result in results:
     vagas = random.randint(1,100)
